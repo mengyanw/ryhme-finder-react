@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 
 const InputGroup = (props) => {
-  const { setRhymeFoundFromAPI, setSynonymFoundFromAPI, setOutputDescription} = props;
+  const {
+    setWordsFoundFromAPI,
+    setOutputDescription,
+    setIsRyhmeOrSynonym,
+    setInitialOrLoadingOrReady,
+  } = props;
   const [wordInput, setWordInput] = useState("");
 
   const getDatamuseRhymeUrl = (rel_rhy) => {
@@ -18,22 +23,42 @@ const InputGroup = (props) => {
     fetch(url)
       .then((response) => response.json())
       .then(
-        (json) => { callback(Object.values(json)); },
-        (err) => { console.error(err); }
+        (json) => {
+          setInitialOrLoadingOrReady(2);
+          callback(Object.values(json));
+        },
+        (err) => {
+          console.error(err);
+        }
       );
   };
   const showRyhmes = () => {
-      setOutputDescription(() => {
-          return `Words that rhyme with ${wordInput}:`
-      })
-      return datamuseRequest(getDatamuseRhymeUrl(wordInput), setRhymeFoundFromAPI);
-  }
+    setInitialOrLoadingOrReady(1);
+    setIsRyhmeOrSynonym(true);
+    setOutputDescription(() => {
+      return `Words that rhyme with ${wordInput}:`;
+    });
+    return datamuseRequest(
+      getDatamuseRhymeUrl(wordInput),
+      setWordsFoundFromAPI
+    );
+  };
   const showSynonyms = () => {
-      return datamuseRequest(getDatamuseSimilarToUrl(wordInput), setSynonymFoundFromAPI);
-  }
+    setInitialOrLoadingOrReady(1);
+    setIsRyhmeOrSynonym(false);
+    setOutputDescription(() => {
+      return `Words with a meaning similar to ${wordInput}:`;
+    });
+    return datamuseRequest(
+      getDatamuseSimilarToUrl(wordInput),
+      setWordsFoundFromAPI
+    );
+  };
   const keyDownHandler = (e) => {
-      if (e.key === 'Enter') { showRyhmes(); }
-  }
+    if (e.key === "Enter") {
+      showRyhmes();
+    }
+  };
   return (
     <div className="row">
       <div className="input-group col">
@@ -48,7 +73,11 @@ const InputGroup = (props) => {
         <button type="button" className="btn btn-primary" onClick={showRyhmes}>
           Show rhyming words
         </button>
-        <button type="button" className="btn btn-secondary" onClick={showSynonyms}>
+        <button
+          type="button"
+          className="btn btn-secondary"
+          onClick={showSynonyms}
+        >
           Show synonyms
         </button>
       </div>

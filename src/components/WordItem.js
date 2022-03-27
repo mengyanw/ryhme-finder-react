@@ -1,5 +1,5 @@
-// import "./RhymeItem.css";
-const RyhmeItem = (props) => {
+import "./WordItem.css";
+const WordItem = (props) => {
   const { word, setSavedWordsArray, item } = props;
   const onClickHandler = () => {
     setSavedWordsArray((prevArray) => {
@@ -11,10 +11,10 @@ const RyhmeItem = (props) => {
   return (
     <li>
       {word}
-      <button className="btn btn-sm btn-outline-danger" type="button" onClick={onClickHandler}>
+      <button className="btn btn-sm btn-outline-success" type="button" onClick={onClickHandler}>
         save
       </button>
     </li>
   );
 };
-export default RyhmeItem;
+export default WordItem;

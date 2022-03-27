@@ -1,15 +1,12 @@
-import RyhmeItem from "./RyhmeItem";
+
+import OutputWordsList from "./OutputWordsList";
 const RyhmeGroup = (props) => {
   const { entry } = props;
-  const [key, dataInGroup] = entry;
+  const [numSyllables, data] = entry;
   return (
     <div>
-      <h3>Syllables: {key}</h3>
-      <ul>
-        {dataInGroup.map((item, index) => (
-          <RyhmeItem word={item.word} item={item} key={index} {...props}  />
-        ))}
-      </ul>
+      <h3>Syllables: {numSyllables}</h3>
+      <OutputWordsList data={data} {...props} />
     </div>
   );
 };
