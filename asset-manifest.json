@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ryhme-finder-react/static/css/main.c9c46f65.css",
+    "main.js": "/ryhme-finder-react/static/js/main.93ab3770.js",
+    "index.html": "/ryhme-finder-react/index.html",
+    "main.c9c46f65.css.map": "/ryhme-finder-react/static/css/main.c9c46f65.css.map",
+    "main.93ab3770.js.map": "/ryhme-finder-react/static/js/main.93ab3770.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c9c46f65.css",
+    "static/js/main.93ab3770.js"
+  ]
+}
