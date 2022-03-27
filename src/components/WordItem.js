@@ -1,6 +1,6 @@
 import "./WordItem.css";
 const WordItem = (props) => {
-  const { word, setSavedWordsArray, item } = props;
+  const { word, setSavedWordsArray } = props;
   const onClickHandler = () => {
     setSavedWordsArray((prevArray) => {
         if (prevArray.includes(word) === false)

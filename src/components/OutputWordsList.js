@@ -4,7 +4,7 @@ const OutputWordsList = (props) => {
   return (
     <ul>
       {data.map((item, index) => (
-        <WordItem word={item.word} item={item} key={index} {...props} />
+        <WordItem word={item.word} key={index} {...props} />
       ))}
     </ul>
   );

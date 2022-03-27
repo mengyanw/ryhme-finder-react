@@ -2,7 +2,7 @@ import "./SavedWordsList.css"
 const SavedWordsList = (props) => {
     const { savedWordsArray } = props;
     let joinedSavedWords;
-    if (savedWordsArray.length == 0) {
+    if (savedWordsArray.length === 0) {
         joinedSavedWords = "None"
     }
     else {

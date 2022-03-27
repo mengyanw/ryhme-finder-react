@@ -10,7 +10,7 @@ const OutputGroup = (props) => {
     return <h2 className="loading_output">Loading...</h2>;
   } 
   else {
-    if (wordsFoundFromAPI.length == 0) {
+    if (wordsFoundFromAPI.length === 0) {
       return <div>(no results)</div>;
     } 
     else if (isRhymeOrSynonym === false) {
